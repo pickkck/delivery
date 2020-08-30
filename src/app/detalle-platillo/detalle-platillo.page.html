@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-button> 
+        <ion-back-button style="color: rgba(233, 225, 225, 0.8);" defaultHref="restaurantes"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="verCarrito(restaurante[0].claveEstablecimiento,restaurante[0].claveSucursal)">
+        <ion-icon item-start large name="cart" style="color: rgba(233, 225, 225, 0.8);" ></ion-icon>
+        <ion-badge class="carts" item-right color="danger">{{items}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title *ngIf="restaurante" align="center" style="color: rgba(233, 225, 225, 0.8);">{{restaurante[0].nombreEstablecimiento}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="platillo">
+
+  <div class="arriba fondoRojo">
+    <br>
+</div>
+<div class="abajo"  align="center">
+    <br>
+</div>
+<div class="contenedor" align = "center">
+
+
+<div class="informacion" align="center">
+  <img class="foto" src="assets/images/{{platillo[0].foto}}" style="max-height: 150px; max-width: 150px;" onerror="this.src='assets/images/platillo.jpg'" />
+  <p class="nombre">{{platillo[0].producto}}</p>
+</div>
+
+</div>
+
+<div class="fondoGris" align="center">
+
+  <ion-card  class="tarjeta">
+           <ion-item text-wrap>
+
+                <ion-label text-wrap>
+                    <ion-text >
+                      <h3><b> Descripción </b></h3>
+                    </ion-text>
+                    <p>{{platillo[0].descripcion}}</p>
+                </ion-label>
+           </ion-item>
+ </ion-card>
+
+ <ion-card  class="tarjeta" *ngFor="let i of instrucciones; let x = index;">
+
+  <ion-item text-wrap>
+
+       <ion-label text-wrap>
+           <ion-text >
+             <h3><b>{{i.instruccion}}</b></h3>
+           </ion-text>
+       </ion-label>
+  </ion-item>
+  
+  <div *ngIf="i.selectMaximo > 1">
+    <ion-list>
+      <ion-item *ngFor="let o of opciones[i.claveInstruccion]">
+        <ion-label>{{o.opcion}}</ion-label>
+        <ion-checkbox [(ngModel)]="check[i.claveInstruccion+'-'+o.claveOpcion]" slot="end" value="{{i.claveInstruccion}}-{{o.claveOpcion}}"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="i.selectMaximo == 1">
+    <ion-list>
+      <ion-radio-group [(ngModel)]="radio[i.claveInstruccion]">
+        <ion-item *ngFor="let o of opciones[i.claveInstruccion]">
+          <ion-label>{{o.opcion}}</ion-label>
+          <ion-radio  slot="end" value="{{i.claveInstruccion}}-{{o.claveOpcion}}"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+
+
+
+</ion-card>
+
+
+<ion-col col-6>
+  <div class="count">
+    <span class="item-count" (click)="remove()">
+      -
+    </span>
+    <span class="item-count show-count">
+      {{cantidad}}
+    </span>
+    <span class="item-count" (click)="add()">
+      +
+    </span>
+  </div>
+</ion-col>
+
+<ion-col col-6>
+  <ion-textarea [(ngModel)]="nota" placeholder="Nota adicional para el restaurante"></ion-textarea>
+</ion-col> 
+
+<ion-col col-6>
+  <ion-button align="center" class="login-btn" (click)="addCarrito()">Agregar {{cantidad}} al Carrito - MXN{{total}}</ion-button>
+</ion-col>
+
+ </div>
+
+</ion-content>

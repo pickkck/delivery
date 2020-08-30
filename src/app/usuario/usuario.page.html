@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-title align="center" style="color: rgba(233, 225, 225, 0.8);">PERFIL</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="usuario">
+<!--
+  <ion-fab-button vertical="top" horizontal="start" slot="fixed" size="small" (click)="adjuntarImagen()" color="dark">
+     <ion-icon name="camera"></ion-icon>
+   </ion-fab-button>
+-->
+  <div class="arriba fondoRojo">
+      <br>
+  </div>
+  <div class="abajo"  align="center">
+      <br>
+  </div>
+<div class="contenedor" align = "center">
+
+
+  <div class="informacion" align="center">
+    <img class="foto" src="assets/images/logo-icon.png" />
+    <p class="nombre">{{usuario.nombre}}</p>
+  </div>
+
+</div>
+
+
+  <div class="fondoGris" align="center">
+
+      <ion-card  class="tarjeta">
+               <ion-item text-wrap>
+                   <ion-icon item-start large name="call" ></ion-icon>
+
+                    <ion-label text-wrap>
+                        <ion-text >
+                          <h3>Número telefónico</h3>
+                        </ion-text>
+                        <p>{{usuario.telefono}}</p>
+                    </ion-label>
+               </ion-item>
+     </ion-card>
+
+     <ion-card  class="tarjeta">
+              <ion-item text-wrap>
+                  <ion-icon item-start large name="mail" ></ion-icon>
+
+                   <ion-label text-wrap>
+                       <ion-text >
+                         <h3>Correo electrónico</h3>
+                       </ion-text>
+                       <p>{{usuario.correo}}</p>
+                   </ion-label>
+              </ion-item>
+     </ion-card>
+
+
+     </div>
+     <div align="center" class="col-md-6" style="position:fixed; bottom: 10px; left: 20%;">
+      <div align="center">
+        <ion-button align="center" class="login-btn" (click)="cerraSesion()">Cerrar sesión</ion-button>
+      </div>
+      
+     </div>
+
+</ion-content>

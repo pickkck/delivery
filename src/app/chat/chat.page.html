@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="mensajes==1">
+      <ion-button (click)="verCarrito()">
+        <ion-icon item-start large name="navigate" style="color: rgba(233, 225, 225, 0.8);" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title  align="center" style="color: rgba(233, 225, 225, 0.8);">{{mensaje}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo">
+  <ion-refresher slot="fixed" (ionRefresh)="recorreoScroll($event)" class="fondo">
+    <ion-refresher-content pullingIcon="arrow-dropdown" class="fondo">
+
+      </ion-refresher-content>
+  </ion-refresher>
+  <div class="contenedor" *ngIf="chats != null">
+
+  <ion-list  *ngFor="let c of chats; let i = last" lines="none" >
+        <ion-item  ng-class="{'fondo': i}" *ngIf="c.isCliente != 1">
+          <img slot="start" class="user-avatar round" src="c.foto" onerror="this.src='assets/images/repartidor.svg';"  >
+          <div class="izq"  >
+              <ion-card class="contenido ion-text-wrap">
+                <h6 style="font-weight: bold">{{c.nombre}}</h6>
+                {{ c.chat }}<br>
+                <span>{{c.fechaHora}}</span>
+            </ion-card>
+         </div>
+        </ion-item>
+
+        <ion-item  ng-class="{'fondo': i}" *ngIf="c.isCliente == 1">
+
+                  <div class="der">
+                         <ion-card class="contenido2 ion-text-wrap">
+                        <h6 style="font-weight: bold">{{c.nombre}}:</h6>
+                         {{ c.chat }}
+                         <br>
+                         <span>{{c.fechaHora}}</span>
+                       </ion-card>
+                 </div>
+                <img slot="end" class="user-avatar round" src="{{ c.foto  }}"  onerror="this.src='assets/images/logo-icon.png';" >
+
+        </ion-item>
+
+      </ion-list>
+
+    </div>
+
+
+  </ion-content>
+  <ion-footer class="margen2">
+    <ion-row class="margen" *ngIf="mensajes==1">
+
+      <ion-input type="text" maxlength="250"  [(ngModel)]="mensajeNuevo"  placeholder="Escribir mensaje..."></ion-input>
+
+      <ion-button class="margen" style="background-color: #FB770D;" size="small" (click)="enviarMensaje()" >
+        <ion-icon name="send" large></ion-icon>
+      </ion-button>
+
+    </ion-row>
+  </ion-footer>

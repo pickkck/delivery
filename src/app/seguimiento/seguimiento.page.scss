@@ -1,0 +1,87 @@
+ion-content{
+    --ion-background-color: #f7f7f7 !important;
+ }
+ 
+ .fondoRojo{
+   background:  #FB770D !important;
+   padding-bottom: 1%;
+   margin-bottom: 0;
+ }
+ 
+ .fondoGris{
+   margin-top: 0;
+     background-color: #f7f7f7 !important;
+ }
+ 
+ 
+ ion-icon{
+   color: #F10E35;
+ }
+ 
+ ion-label{
+   margin-left: 5%;
+ }
+ 
+.new-background-color{
+  --background: #FB770D;
+}
+.foto{
+  max-width: 75px;
+  max-height: 75px;
+}
+ .nombre{
+     font-size: 110%;
+     font-family: arial;
+     margin-top: 0;
+     padding-bottom: 1%;
+     color: black;
+ }
+ 
+ .tarjeta{
+   border-radius: 36px;
+   --ion-background-color: white !important;
+   margin-left: 5%;
+   margin-right: 5%;
+ }
+ 
+ .agregar{
+   color: green;
+ }
+ 
+ .codigoND{
+   text-decoration:line-through red;
+ }
+ 
+ .abajo{
+   height: 15% !important;
+   background: #ffffff !important;
+ }
+ .arriba{
+   height: 20% !important;
+ }
+ 
+ .contenedor{
+  height: 34%  !important;
+  /*IMPORTANTE*/
+  position: absolute;
+  top: 2%;
+  display: flex ;
+  justify-content: center !important;
+  align-items: center !important;
+   width: 100% !important;
+ }
+ 
+ img{
+   background-color: white;
+   border-radius: 40%;
+   width: 150px;
+ }
+ .login-btn {
+   width: 80%;
+   display: block;
+   margin: 0 auto;
+   border-radius: 5px;
+   height: 3.4rem;
+   --background: #FB770D;
+ }
+ 

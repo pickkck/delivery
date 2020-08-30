@@ -1,0 +1,145 @@
+
+ion-content{
+  overflow: auto;
+  height: 100%;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.new-background-color{
+  --background: #FB770D;
+  }
+
+.fondo{
+  padding-top: 0%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100% !important;
+}
+
+img{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+ion-row{
+  margin: 0;
+  padding: 0;
+}
+
+.list-ios {
+  margin: 0;
+  border: none !important;
+}
+
+ion-header{
+  padding: 0;
+  margin: 0;
+}
+
+// Mensajes Ajenos
+.contenido{
+  padding: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 0;
+  margin-left: 0;
+  background-color: #FFF;
+  //box-shadow: 0 0 1em color($colors, dark);
+  border-radius: 20px;
+  //display: inline-block;
+  font-size: 13px;
+  vertical-align: top;
+  color: #424242;
+  height: content;
+}
+
+// Mensajes admin
+.contenido1{
+  padding: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 0;
+  margin-left: 0;
+  background-color: #FF0000;
+  color: white;
+  //box-shadow: 0 0 1em color($colors, dark);
+  border-radius: 20px;
+  //display: inline-block;
+  font-size: 13px;
+  vertical-align: top;
+  width: 100% !important;
+  height: content;
+}
+
+// Mensajes propios
+.contenido2{
+  padding: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 0;
+  margin-right: 0;
+  background-color: #F0F1F2;
+  color: #131313;
+  //box-shadow: 0 0 1em color($colors, dark);
+  border-radius: 20px;
+  //display: inline-block;
+  font-size: 13px;
+  vertical-align: top;
+  height: content;
+  text-align: right !important;
+}
+
+.margen {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.margen2{
+  height: 8% !important;
+}
+
+.user-avatar {
+  margin: 0;
+  padding: 0;
+  max-width: 150px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+}
+
+.der{
+  padding-top: 0;
+  padding-right: 0;
+  margin-right: 0;
+  padding-left: 5%;
+  width: 100% !important;
+}
+
+.izq{
+  margin-left: 0;
+  padding-top: 0;
+  padding-left: 0px;
+  padding-right: 5%;
+  width: 100% !important;
+}
+
+.plantilla{
+  height: 30px;
+  background-color: white;
+  color: black;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  border-radius: 5px;
+  border-style: solid;
+    border-width: thin;
+  border-color: black;
+  margin: 1px;
+  font-size: small;
+}

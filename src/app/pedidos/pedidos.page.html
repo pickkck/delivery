@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-title align="center" style="color: rgba(233, 225, 225, 0.8);">PEDIDOS</ion-title>
+	<ion-segment (ionChange)="segmentChanged($event)" value="{{viewPedidos}}">
+      <ion-segment-button value="1">
+        <ion-label style="color: rgba(233, 225, 225, 0.8);">Activos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label style="color: rgba(233, 225, 225, 0.8);">Historico</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>	
+	<!--viewPedidos == 1 se veran los pedidos en espera de aceptar o rechazar-->
+  <div *ngIf="viewPedidos == 1" style="width: 100%; height: 100%;">
+
+    <div *ngIf="pedidos">
+      <div *ngFor="let p of pedidos">
+    <ion-card >
+      <img (click)="verCarrito(p[0].claveEstablecimiento,p[0].claveSucursal,p[1],p[3])" src="assets/images/{{p[0].fotoPresentacion}}"  onerror="this.src='assets/images/torta.jpeg'" />
+      <ion-card-header (click)="verCarrito(p[0].claveEstablecimiento,p[0].claveSucursal,p[1],p[3])">
+        <ion-card-title>{{p[0].nombreEstablecimiento}}</ion-card-title>
+        <ion-card-subtitle>{{p[0].nombreSucursal}}</ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-item (click)="verCarrito(p[0].claveEstablecimiento,p[0].claveSucursal,p[1],p[3])">
+        <ion-icon name="card" slot="start"></ion-icon>
+        <ion-label><b>Estado: </b>{{p[2]}}</ion-label>
+      </ion-item>
+      
+			<ion-button size="small" color="vino" style="background-color: #FB770D;" class="btnBorrar" (click)="eliminaPedido(p[0].claveEstablecimiento,p[0].claveSucursal)">
+				<ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-card>
+  </div>
+  </div>
+  
+    
+  <div *ngIf="activos">
+		<div *ngFor="let p of activos">
+      <ion-card>
+        <img (click)="verCarrito(p.claveEstablecimiento,p.claveSucursal,p.claveEstatusPedido,p.clavePedido)" src="assets/images/{{p.imagenPresentacion}}"  onerror="this.src='assets/images/torta.jpeg'" />
+        <ion-card-header (click)="verCarrito(p.claveEstablecimiento,p.claveSucursal,p.claveEstatusPedido,p.clavePedido)">
+          <ion-card-title>{{p.nombreEstablecimiento}}</ion-card-title>
+          <ion-card-subtitle>{{p.nombreSucursal}}</ion-card-subtitle>
+        </ion-card-header>
+        
+        <ion-item (click)="verCarrito(p.claveEstablecimiento,p.claveSucursal,p.claveEstatusPedido,p.clavePedido)">
+          <ion-icon name="card" slot="start"></ion-icon>
+          <ion-label><b>Estado: </b>{{p.estatus}}</ion-label>
+        </ion-item>
+      
+        <ion-button size="small" color="vino" style="background-color: #FB770D;" class="btnBorrar" (click)="verChat(p.claveEstablecimiento, p.clavePedido, 1)">
+          <ion-icon name="chatbubbles"></ion-icon>
+        </ion-button>
+      </ion-card>
+    </div>
+  </div>
+
+
+	</div>	
+
+  
+  <div *ngIf="viewPedidos == 2" style="width: 100%; height: 100%;">
+    
+    <div *ngIf="historico">
+      <div *ngFor="let p of historico">
+        <ion-card>
+          <img (click)="verCarrito(p.claveEstablecimiento,p.claveSucursal,100,p.clavePedido)" src="assets/images/{{p.imagenPresentacion}}"  onerror="this.src='assets/images/torta.jpeg'" />
+          <ion-card-header (click)="verCarrito(p.claveEstablecimiento,p.claveSucursal,100,p.clavePedido)">
+            <ion-card-title>{{p.nombreEstablecimiento}}</ion-card-title>
+            <ion-card-subtitle>{{p.nombreSucursal}}</ion-card-subtitle>
+          </ion-card-header>
+          
+          <ion-item (click)="verCarrito(p.claveEstablecimiento,p.claveSucursal,100,p.clavePedido)">
+            <ion-icon name="card" slot="start"></ion-icon>
+            <ion-label><b>Estado: </b>{{p.estatus}}</ion-label>
+          </ion-item>
+
+          <ion-button size="small" color="vino" style="background-color: #FB770D;" class="btnBorrar" (click)="verChat(p.claveEstablecimiento, p.clavePedido, 0)">
+            <ion-icon name="chatbubbles"></ion-icon>
+          </ion-button>
+        </ion-card>
+      </div>
+    </div>
+
+	</div>
+	
+</ion-content>

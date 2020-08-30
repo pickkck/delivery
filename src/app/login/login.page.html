@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-title align="center" style="color: rgba(233, 225, 225, 0.8);">INICIAR SESIÓN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login">
+	<img class="logo" src="assets/images/logo-icon.png">
+	<form [formGroup]="myForm" (ngSubmit)="iniciarSesion()">
+		<ion-row>
+	        <ion-col size="12">
+	        	<div class="divItem">
+	        		<ion-item>
+		        		<ion-label color="light">Telefono:</ion-label>
+		            	<ion-input class="form-control" id="exampleInputEmail1" type="tel" formControlName="usuario"></ion-input>  
+		            </ion-item>
+	        	</div>            
+	        </ion-col>
+	    </ion-row>
+	    <!--password-->
+	    <ion-row>
+	        <ion-col size="12">
+	            <ion-item>
+	                <ion-label color="light">Contraseña:</ion-label>
+	                <ion-input id="exampleInputPassword1" type="password" formControlName="pass"
+	                    ></ion-input>
+	            </ion-item>
+	        </ion-col>
+	    </ion-row>
+
+	    <!--ion-button-->
+	    <ion-row >
+	        <ion-col size="12">
+	            <ion-button class="login-btn" type="submit" [disabled]="!myForm.valid">Iniciar Sesión</ion-button>
+	        </ion-col>
+	    </ion-row>
+	</form>
+	
+	<ion-row style="bottom: 0px;">
+		<ion-col size="12" align="center">
+			<a style="color: white;" (click)="Register()">¿No tienes una cuenta? Registrate ahora!</a>
+		</ion-col>
+	</ion-row>
+	
+
+</ion-content>

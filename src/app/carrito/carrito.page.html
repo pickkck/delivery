@@ -1,0 +1,105 @@
+<ion-header *ngIf="restaurante">
+	<ion-toolbar class="new-background-color">
+	  <ion-buttons slot="start">
+		<ion-button> 
+		  <ion-back-button style="color: rgba(233, 225, 225, 0.8);" defaultHref="restaurantes"></ion-back-button>
+		</ion-button>
+	  </ion-buttons>
+	  <ion-buttons slot="end">
+		<ion-button (click)="verPedidos()">
+		  <ion-icon item-start large name="clipboard" style="color: rgba(233, 225, 225, 0.8);" ></ion-icon>
+		</ion-button>
+	  </ion-buttons>
+  
+	  <ion-title align="center" style="color: rgba(233, 225, 225, 0.8);">{{restaurante[0].nombreEstablecimiento}}</ion-title>
+	</ion-toolbar>
+  </ion-header>
+
+<ion-content>
+	<div class="arriba fondoRojo">
+		<br>
+	</div>
+	<div class="abajo"  align="center">
+		<br>
+	</div>
+  <div class="contenedor" align = "center">
+  
+  
+	<div class="informacion" align="center" *ngIf="restaurante">
+	  <img class="foto" src="assets/images/{{restaurante[0].fotoPresentacion}}" onerror="this.src='assets/images/restaurante.png'"/>
+	  <p class="nombre">{{restaurante[0].nombreSucursal}}</p>
+	</div>
+  
+  </div>
+  
+  <div class="fondoGris" align="center" *ngIf="platillos">
+
+	<ion-item text-wrap>
+		<p class="nomPedido"><b>Dirección de Entrega:</b></p>
+		<ion-input type="text" [(ngModel)]="direccion" required ></ion-input>
+	</ion-item>
+
+	<div>
+
+		<ion-card class="producto" *ngFor="let p of platillos">
+
+			<ion-item lines="none">
+				<ion-col size="4">
+	              	<ion-avatar >
+	                    <img src="assets/images/{{p.foto}}" onerror="this.src='assets/images/platillo.jpg'" />
+	                </ion-avatar>
+	            </ion-col>
+	            <ion-col size="8">
+	               	<ion-label >
+	               		<ion-text >
+	               			<ion-label class="nomPedido"><b>{{p.nombre}} </b></ion-label>
+	                   		<p> {{p.descripcion }}</p>
+	                   		<p><b>Cantidad: </b> {{p.cantidad}}</p>
+	                   		<p><b>Precio: $</b> {{p.precio}}</p>
+	                   		<p><b>Total: $</b> {{p.total}}</p>
+	               		</ion-text>            
+	               	</ion-label>
+	            </ion-col>
+			</ion-item>
+			
+			<ion-label class="inst"><b>Intrucciones: </b></ion-label>
+			<ion-list *ngFor="let i of p.totalInst" class="lista">	
+				<ion-label class="label1"><b>{{i.instruccion }} </b> <label *ngFor="let o of p.instrucciones"><i *ngIf="o.cveInst==i.claveInstruccion">{{o.opc}} </i></label></ion-label>
+			</ion-list>
+			<ion-label class="inst"><b>Nota: </b></ion-label>
+			<ion-label class="label2">{{p.nota}}</ion-label>
+			<ion-button size="small" color="vino" class="btnBorrar" (click)="eliminar(p.date)">
+				<ion-icon name="trash-outline"></ion-icon>
+			</ion-button>
+		
+		</ion-card>
+
+	</div>
+	
+
+	<ion-card class="tarjeta">
+	    <ion-item text-wrap>
+	        <p class="nomPedido"><b>Cupón:</b></p>
+	        <ion-input type="text" [(ngModel)]="cupon" required ></ion-input> 
+	        <ion-button  style="background-color: #FB770D;" size="small" color="vino" (click)="verCupon()">aplicar</ion-button>
+	    </ion-item>
+	    <ion-item>
+	        <ion-label >
+           		<ion-text class="total" >
+               		<p><b>Subtotal: $</b> {{ total }}</p>
+               		<p *ngIf="descuento"><b>Descuento: </b> {{descuento}}</p>
+               		<p><b>Costo de Envio: $</b> {{costo}}</p>
+               		<h2 class="colorLetra"><b>Total: $ {{ totalFinal }}</b></h2>
+           		</ion-text>            
+           	</ion-label>
+		</ion-item>
+	</ion-card>
+
+	<ion-button color="vino" (click)="confirmar()" style="background-color: #FB770D;" shape="round" class="btnCon">Confirmar</ion-button>
+
+    </div>
+
+
+
+
+</ion-content>

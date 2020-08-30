@@ -1,0 +1,45 @@
+
+.btn-log-in {
+  backgroung-color: #32cd32;
+}
+.new-background-color{
+  --background: #FB770D;
+}
+.item {
+  --ion-background-color: rgba(119, 119, 119, 0.8);
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.item.item-block .item-inner {
+  border-bottom: 0px;
+}
+.login {
+  --background: none;
+  background-image: url('/assets/images/bg.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed!important;
+  color: #fff;
+  .logo {
+    width: 86px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 4em;
+    padding-bottom: 2em;
+  }
+}
+.login-btn {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  height: 3.4rem;
+  --background: #FB770D;
+}
+.social-icon {
+  width: 86px;
+  padding: 0px 20px;
+}
+

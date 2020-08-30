@@ -1,0 +1,64 @@
+<ion-header *ngIf="restaurante">
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-button> 
+        <ion-back-button style="color: rgba(233, 225, 225, 0.8);" defaultHref="restaurantes"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="verCarrito(restaurante[0].claveEstablecimiento,restaurante[0].claveSucursal)">
+        <ion-icon item-start large name="cart" style="color: rgba(233, 225, 225, 0.8);" ></ion-icon>
+        <ion-badge class="carts" item-right color="danger">{{items}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title align="center" style="color: rgba(233, 225, 225, 0.8);">{{restaurante[0].nombreEstablecimiento}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!--
+  <ion-fab-button vertical="top" horizontal="start" slot="fixed" size="small" (click)="adjuntarImagen()" color="dark">
+     <ion-icon name="camera"></ion-icon>
+   </ion-fab-button>
+-->
+  <div class="arriba fondoRojo">
+      <br>
+  </div>
+  <div class="abajo"  align="center">
+      <br>
+  </div>
+<div class="contenedor" align = "center">
+
+
+  <div class="informacion" align="center" *ngIf="restaurante">
+    <img class="foto" src="assets/images/{{restaurante[0].fotoPresentacion}}" onerror="this.src='assets/images/restaurante.png'"/>
+    <p class="nombre">{{restaurante[0].nombreSucursal}}</p>
+  </div>
+
+</div>
+
+
+  <div class="fondoGris" align="center" *ngIf="platillos">
+    <div class="row"  *ngFor="let p of platillos">
+    <ion-card  class="tarjeta" *ngIf="p.existenciaSN==1" (click)="verDetalle(restaurante[0].claveEstablecimiento,p.claveProducto,restaurante[0].claveSucursal)">
+      <ion-item text-wrap>
+        <img src="assets/images/{{p.foto}}" onerror="this.src='assets/images/platillo.jpg'" />
+           <ion-label text-wrap>
+               <ion-text >
+                 <h3>{{p.producto}}</h3>
+               </ion-text>
+               <p> <b> Descripcion: </b></p>
+               <p>{{p.descripcion}}</p>
+               
+               <ion-text align="right">
+                <h3>Costo: ${{p.costo}}</h3>
+              </ion-text>
+           </ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+
+     </div>
+
+</ion-content>
